@@ -89,6 +89,3 @@ if __name__ == "__main__":
         visit_count = capteur.get_visit_count(init_date)
         print(init_date, visit_count)
 
-    # python sensor.py > log.txt
-    # cat log.txt | grep break
-    # cat log.txt | grep malfunction

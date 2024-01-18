@@ -1,3 +1,5 @@
 *.csv
+/fake_app_data/__pycache__*
+/tests/
 /venv/
 .idea
