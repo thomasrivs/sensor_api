@@ -1,7 +1,7 @@
-from fake_app_data.sensor import VisitSensor
 import unittest
 from datetime import date
 
+from fake_app_data.sensor import VisitSensor
 
 class TestVisitSensor(unittest.TestCase):
     def test_weekdays_open(self):
