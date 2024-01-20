@@ -43,7 +43,7 @@ class StoreSensor:
         """Return the traffic for one sensor at a date"""
         return self.sensors[sensor_id].get_visit_count(business_date)
 
-    def get_all_traffic(self, business_date: date) -> int:
+    def get_store_traffic(self, business_date: date) -> int:
         """Return the traffic for all sensors of the store at a date"""
         visit = 0
         for i in range(8):

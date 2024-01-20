@@ -1,6 +1,6 @@
 from datetime import date
 
-from fake_data_app.store import StoreSensor
+from fake_app_data.store import StoreSensor
 
 
 def create_app() -> dict:

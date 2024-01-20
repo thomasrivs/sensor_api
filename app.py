@@ -3,7 +3,7 @@ from datetime import date
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 
-from fake_data_app import create_app
+from fake_app_data import create_app
 
 store_dict = create_app()
 app = FastAPI()
@@ -11,7 +11,7 @@ app = FastAPI()
 
 @app.get("/")
 def visit(
-    store_name: str, year: int, month: int, day: int, sensor_id: int | None = None
+    store_name: str, year: int, month: int, day: int, sensor_id: int
 ) -> JSONResponse:
     # If the store is not in the dictionary
     if not (store_name in store_dict.keys()):
@@ -30,7 +30,7 @@ def visit(
     # Check the date
     try:
         date(year, month, day)
-    except TypeError:
+    except (ValueError):
         return JSONResponse(status_code=404, content="Enter a valid date")
 
     # Check the date is in the past
@@ -39,7 +39,7 @@ def visit(
 
     # If no sensor choose return the visit for the whole store
     if sensor_id is None:
-        visit_counts = store_dict[store_name].get_all_traffic(date(year, month, day))
+        visit_counts = store_dict[store_name].get_store_traffic(date(year, month, day))
     else:
         visit_counts = store_dict[store_name].get_sensor_traffic(
             sensor_id, date(year, month, day)
